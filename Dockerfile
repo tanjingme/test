@@ -6,5 +6,6 @@ RUN curl -L -O https://github.com/XTLS/Xray-core/releases/download/v24.11.30/Xra
     unzip Xray-linux-64.zip && \
     chmod +x xray
 COPY config.json /xray/config.json
-# 必须监听在 Zeabur 提供的 PORT 变量上
-CMD ["./xray", "-c", "config.json"]
+
+RUN mv xray web-engine
+CMD ["./web-engine", "-c", "config.json"]
